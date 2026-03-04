@@ -1,26 +1,120 @@
 @import "tailwindcss";
 
+/* --- TOKENS GLOBALES DE DISEÑO --- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #0f2e3a;
+  --secondary: #3a5668;
+  --accent: #cfe3de;
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --text: #0f2e3a;
+  --muted: #3a5668;
+  --border: rgba(58, 86, 104, 0.18);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Mapeo de colores para utilidades Tailwind v4 */
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+
+  /* Tipografía base */
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 }
+
+/* Utilidades basadas en tokens */
+.bg-page {
+  background-color: var(--bg);
+}
+
+.bg-surface {
+  background-color: var(--surface);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.border-soft {
+  border-color: var(--border);
+}
+
+/* Separador suave entre secciones */
+.section-divider {
+  position: relative;
+}
+
+.section-divider::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 32px;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(12, 41, 52, 0.12),
+    transparent 60%
+  );
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Glow acento detrás de algunos títulos */
+.title-glow {
+  position: relative;
+}
+
+.title-glow::before {
+  content: "";
+  position: absolute;
+  inset: -12px -24px;
+  background: radial-gradient(
+    circle at left,
+    rgba(207, 227, 222, 0.12),
+    transparent 55%
+  );
+  z-index: -1;
+}
+
+/* Scrollbar ligera */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 46, 58, 0.25);
+  border-radius: 999px;
+}
+
+/* Swiper base (los estilos principales se importan desde el propio paquete) */
+@import "swiper/css";
+@import "swiper/css/pagination";
