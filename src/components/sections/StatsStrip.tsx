@@ -2,20 +2,56 @@
 
 import AnimatedSection from "@/components/common/AnimatedSection";
 import { stats } from "@/config/content";
-import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function useCountUp(target: number) {
-  const controls = useAnimation();
+  const [value, setValue] = useState(0);
   const ref = useRef<HTMLSpanElement | null>(null);
-  const inView = useInView(ref, { once: true, amount: 0.6 });
 
   useEffect(() => {
-    if (!inView) return;
-    controls.start({ value: target, transition: { duration: 1.4 } });
-  }, [controls, inView, target]);
+    let observer: IntersectionObserver | null = null;
+    let started = false;
 
-  return { controls, ref };
+    const el = ref.current;
+    if (!el) return;
+
+    const startAnimation = () => {
+      if (started) return;
+      started = true;
+      const duration = 1400;
+      const startTime = performance.now();
+
+      const tick = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        setValue(Math.round(target * progress));
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        }
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startAnimation();
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      if (observer && el) observer.unobserve(el);
+    };
+  }, [target]);
+
+  return { value, ref };
 }
 
 export default function StatsStrip() {
@@ -24,9 +60,7 @@ export default function StatsStrip() {
       <div className="mx-auto max-w-6xl px-4 md:px-6 lg:px-8">
         <div className="grid gap-6 rounded-2xl border border-dashed border-soft bg-page/60 px-4 py-5 md:grid-cols-4 md:gap-4 md:px-6">
           {stats.map((item) => {
-            const { controls, ref } = useCountUp(item.valor);
-            const currentValue =
-              (controls.get()?.value as number | undefined) ?? 0;
+            const { value, ref } = useCountUp(item.valor);
             return (
               <div
                 key={item.id}
@@ -36,14 +70,12 @@ export default function StatsStrip() {
                   {item.etiqueta}
                 </p>
                 <div className="mt-1 flex items-baseline gap-1">
-                  <motion.span
+                  <span
                     ref={ref}
                     className="text-2xl font-semibold text-primary"
-                    initial={{ value: 0 }}
-                    animate={controls}
                   >
-                    {Math.round(currentValue)}
-                  </motion.span>
+                    {value}
+                  </span>
                   {item.sufijo && (
                     <span className="text-sm font-semibold text-primary">
                       {item.sufijo}
