@@ -398,7 +398,9 @@ export const documentTypes = ["Guías", "Formatos", "Términos", "Solicitudes"];
 
 export const contactoInfo = {
   telefono: "(55) 0000 0000",
-  correo: "contacto@polizasjuridicas.mx",
+  whatsapp: "+52 4421775524",
+  whatsappLink: "https://wa.me/524421775524?text=Hola%2C%20Santiago.%20Me%20gustar%C3%ADa%20cotizar%20una%20p%C3%B3liza%20con%20FortiaRent",
+  correo: "contacto@fortiarent.mx",
   horario: "Lunes a viernes de 9:00 a 19:00 h",
   direccion: "Oficinas corporativas en Ciudad de México (dirección referencial)",
   zonasCobertura:

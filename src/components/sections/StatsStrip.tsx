@@ -54,41 +54,50 @@ function useCountUp(target: number) {
   return { value, ref };
 }
 
+interface StatItemProps {
+  item: {
+    id: number;
+    valor: number;
+    etiqueta: string;
+    sufijo?: string;
+    detalle: string;
+  };
+}
+
+function StatItem({ item }: StatItemProps) {
+  const { value, ref } = useCountUp(item.valor);
+  return (
+    <div className="border-l border-soft pl-4 first:border-none first:pl-0 md:border-l md:first:border-none md:first:pl-0">
+      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary/80">
+        {item.etiqueta}
+      </p>
+      <div className="mt-1 flex items-baseline gap-1">
+        <span ref={ref} className="text-2xl font-semibold text-primary">
+          {value}
+        </span>
+        {item.sufijo && (
+          <span className="text-sm font-semibold text-primary">
+            {item.sufijo}
+          </span>
+        )}
+      </div>
+      <p className="mt-1 text-xs text-muted">{item.detalle}</p>
+    </div>
+  );
+}
+
 export default function StatsStrip() {
   return (
     <AnimatedSection className="bg-surface py-10 md:py-12">
       <div className="mx-auto max-w-6xl px-4 md:px-6 lg:px-8">
         <div className="grid gap-6 rounded-2xl border border-dashed border-soft bg-page/60 px-4 py-5 md:grid-cols-4 md:gap-4 md:px-6">
-          {stats.map((item) => {
-            const { value, ref } = useCountUp(item.valor);
-            return (
-              <div
-                key={item.id}
-                className="border-l border-soft pl-4 first:border-none first:pl-0 md:border-l md:first:border-none md:first:pl-0"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary/80">
-                  {item.etiqueta}
-                </p>
-                <div className="mt-1 flex items-baseline gap-1">
-                  <span
-                    ref={ref}
-                    className="text-2xl font-semibold text-primary"
-                  >
-                    {value}
-                  </span>
-                  {item.sufijo && (
-                    <span className="text-sm font-semibold text-primary">
-                      {item.sufijo}
-                    </span>
-                  )}
-                </div>
-                <p className="mt-1 text-xs text-muted">{item.detalle}</p>
-              </div>
-            );
-          })}
+          {stats.map((item) => (
+            <StatItem key={item.id} item={item} />
+          ))}
         </div>
       </div>
     </AnimatedSection>
   );
 }
+
 

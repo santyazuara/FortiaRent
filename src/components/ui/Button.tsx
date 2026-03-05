@@ -11,7 +11,7 @@ const buttonStyles = cva(
     variants: {
       variant: {
         primary:
-          "bg-primary text-white hover:bg-[#163f4f] shadow-sm ring-offset-bg",
+          "bg-primary text-bg hover:opacity-90 shadow-sm ring-offset-bg",
         secondary:
           "border border-secondary text-secondary hover:bg-accent/70 bg-surface",
         ghost: "text-secondary hover:bg-accent/60",

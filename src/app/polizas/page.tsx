@@ -3,7 +3,14 @@ import SectionHeader from "@/components/common/SectionHeader";
 import Accordion from "@/components/common/Accordion";
 import { policyCategories } from "@/config/content";
 
-const comparativo = [
+interface ComparativeRow {
+  feature: string;
+  basica: boolean;
+  plus: boolean;
+  premium: boolean;
+}
+
+const comparativo: ComparativeRow[] = [
   {
     feature: "Revisión de contrato",
     basica: true,
@@ -155,9 +162,10 @@ export default function PolizasPage() {
                     <td className="px-4 py-3 text-sm text-primary">
                       {row.feature}
                     </td>
-                    {["basica", "plus", "premium"].map((col) => {
-                      const val = (row as any)[col] as boolean;
+                    {(["basica", "plus", "premium"] as const).map((col) => {
+                      const val = row[col];
                       return (
+
                         <td
                           key={col}
                           className="px-4 py-3 text-center text-sm"

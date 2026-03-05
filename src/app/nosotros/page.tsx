@@ -48,7 +48,7 @@ export default function NosotrosPage() {
             <SectionHeader
               eyebrow="Nosotros"
               title="Un equipo jurídico enfocado en proteger tus contratos"
-              subtitle="Pólizas Jurídicas nace de la necesidad de traducir el lenguaje legal en soluciones claras para propietarios, inquilinos, inmobiliarias y empresas."
+              subtitle="FortiaRent nace de la necesidad de traducir el lenguaje legal en soluciones claras para propietarios, inquilinos, inmobiliarias y empresas."
               glow
             />
             <p className="mt-4 text-sm text-muted">

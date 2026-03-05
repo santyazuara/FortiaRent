@@ -2,14 +2,14 @@
 
 /* --- TOKENS GLOBALES DE DISEÑO --- */
 :root {
-  --primary: #0f2e3a;
-  --secondary: #3a5668;
-  --accent: #cfe3de;
-  --bg: #f4f6f8;
-  --surface: #ffffff;
-  --text: #0f2e3a;
-  --muted: #3a5668;
-  --border: rgba(58, 86, 104, 0.18);
+  --primary: #0F2E3A;
+  --secondary: #3A5668;
+  --accent: #CFE3DE;
+  --bg: #F4F6F8;
+  --surface: #F4F6F8; /* Using Pure White for surfaces as well */
+  --text: #0F2E3A;
+  --muted: #3A5668;
+  --border: rgba(58, 86, 104, 0.18); /* Based on #3A5668 */
 }
 
 @theme inline {

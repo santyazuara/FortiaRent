@@ -24,7 +24,7 @@ export default function ContactoPage() {
               Datos de contacto
             </h2>
             <div className="space-y-2 text-sm text-muted">
-              <p>Teléfono: {contactoInfo.telefono}</p>
+              <p>WhatsApp: {contactoInfo.whatsapp}</p>
               <p>Correo: {contactoInfo.correo}</p>
               <p>Horario: {contactoInfo.horario}</p>
               <p>Dirección: {contactoInfo.direccion}</p>

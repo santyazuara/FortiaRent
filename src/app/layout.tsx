@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Pólizas Jurídicas | Cobertura legal clara y rápida",
+  title: "FortiaRent | Cobertura legal clara y rápida",
   description:
-    "Pólizas jurídicas para arrendamiento, propietarios y empresas. Cobertura legal clara, procesos ordenados y acompañamiento profesional.",
+    "FortiaRent ofrece pólizas jurídicas para arrendamiento, propietarios y empresas. Cobertura legal clara, procesos ordenados y acompañamiento profesional.",
 };
 
 export default function RootLayout({

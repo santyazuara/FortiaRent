@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { contactoInfo } from "@/config/content";
 
 const footerLinks = [
   { href: "/nosotros", label: "Nosotros" },
@@ -14,12 +15,12 @@ export default function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 md:flex-row md:items-start md:justify-between md:px-6 lg:px-8">
         <div className="max-w-sm">
           <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-sm font-semibold text-white">
-              PJ
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-sm font-semibold text-bg">
+              FR
             </div>
             <div className="flex flex-col">
               <span className="leading-tight text-sm font-semibold text-primary">
-                Pólizas Jurídicas
+                FortiaRent
               </span>
               <span className="leading-none text-[11px] text-muted">
                 Respaldo legal para tu renta
@@ -56,9 +57,9 @@ export default function Footer() {
               Contacto
             </h3>
             <div className="mt-3 space-y-1.5 text-sm text-muted">
-              <p>Teléfono: (55) 0000 0000</p>
-              <p>Correo: contacto@polizasjuridicas.mx</p>
-              <p>Horario: Lun a vie 9:00 – 19:00 h</p>
+              <p>WhatsApp: {contactoInfo.whatsapp}</p>
+              <p>Correo: {contactoInfo.correo}</p>
+              <p>Horario: {contactoInfo.horario}</p>
             </div>
           </div>
         </div>

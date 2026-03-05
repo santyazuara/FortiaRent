@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Button from "@/components/ui/Button";
+import { contactoInfo } from "@/config/content";
 import { AnimatePresence, motion } from "framer-motion";
 
 const links = [
@@ -27,12 +28,12 @@ export default function Navbar() {
       <header className="fixed inset-x-0 top-0 z-40 border-b border-soft/60 bg-surface/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-sm font-semibold text-white">
-              PJ
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-sm font-semibold text-bg">
+              FR
             </div>
             <div className="flex flex-col">
               <span className="leading-tight text-sm font-semibold text-primary">
-                Pólizas Jurídicas
+                FortiaRent
               </span>
               <span className="leading-none text-[11px] text-muted">
                 Cobertura legal clara
@@ -45,16 +46,15 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm transition-colors ${
-                  isActive(link.href)
-                    ? "font-semibold text-primary"
-                    : "text-muted hover:text-primary"
-                }`}
+                className={`text-sm transition-colors ${isActive(link.href)
+                  ? "font-semibold text-primary"
+                  : "text-muted hover:text-primary"
+                  }`}
               >
                 {link.label}
               </Link>
             ))}
-            <Button href="/contacto" size="md">
+            <Button href={contactoInfo.whatsappLink} size="md">
               Cotizar póliza
             </Button>
           </nav>
@@ -77,7 +77,7 @@ export default function Navbar() {
         {open && (
           <>
             <motion.div
-              className="fixed inset-0 z-40 bg-black/40"
+              className="fixed inset-0 z-40 bg-primary/40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -108,17 +108,16 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className={`rounded-lg px-3 py-2 text-sm ${
-                      isActive(link.href)
-                        ? "bg-accent/70 font-semibold text-primary"
-                        : "text-muted hover:bg-accent/40"
-                    }`}
+                    className={`rounded-lg px-3 py-2 text-sm ${isActive(link.href)
+                      ? "bg-accent/70 font-semibold text-primary"
+                      : "text-muted hover:bg-accent/40"
+                      }`}
                   >
                     {link.label}
                   </Link>
                 ))}
                 <div className="mt-3">
-                  <Button href="/contacto" className="w-full">
+                  <Button href={contactoInfo.whatsappLink} className="w-full">
                     Cotizar póliza
                   </Button>
                 </div>

@@ -20,7 +20,7 @@ export default function StepsSection() {
                 className="relative flex flex-col rounded-2xl border border-soft bg-page/70 px-5 py-5"
               >
                 <div className="mb-3 flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-[11px] font-semibold text-white">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-[11px] font-semibold text-bg">
                     {index + 1}
                   </div>
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-secondary/80">
@@ -46,7 +46,7 @@ export default function StepsSection() {
                 key={step.id}
                 className="flex gap-3 rounded-2xl border border-soft bg-page/80 px-4 py-4"
               >
-                <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-white">
+                <div className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-xs font-semibold text-bg">
                   {index + 1}
                 </div>
                 <div>
