@@ -6,9 +6,10 @@ import React from "react";
 type Props = {
   children: React.ReactNode;
   className?: string;
+  id?: string;
 };
 
-export default function AnimatedSection({ children, className }: Props) {
+export default function AnimatedSection({ children, className, id }: Props) {
   const shouldReduce = useReducedMotion();
 
   const variants = {
@@ -18,6 +19,7 @@ export default function AnimatedSection({ children, className }: Props) {
 
   return (
     <motion.section
+      id={id}
       className={className}
       initial="hidden"
       whileInView="visible"

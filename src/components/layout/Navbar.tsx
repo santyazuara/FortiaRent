@@ -5,7 +5,9 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 import { contactoInfo } from "@/config/content";
+import { media } from "@/config/media";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 const links = [
   { href: "/", label: "Inicio" },
@@ -27,18 +29,15 @@ export default function Navbar() {
     <>
       <header className="fixed inset-x-0 top-0 z-40 border-b border-soft/60 bg-surface/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-sm font-semibold text-bg">
-              FR
-            </div>
-            <div className="flex flex-col">
-              <span className="leading-tight text-sm font-semibold text-primary">
-                FortiaRent
-              </span>
-              <span className="leading-none text-[11px] text-muted">
-                Cobertura legal clara
-              </span>
-            </div>
+          <Link href="/" className="flex items-center">
+            <Image
+              src={media.logo}
+              alt="FortiaRent"
+              width={160}
+              height={48}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           <nav className="hidden items-center gap-6 md:flex">
