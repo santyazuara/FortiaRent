@@ -40,12 +40,12 @@ export default function HeroSlider() {
                   src={img}
                   alt={`FortiaRent Hero ${index + 1}`}
                   fill
-                  className="object-cover opacity-90"
+                  className="object-cover"
                   priority={index === 0}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/60 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
-                <div className="absolute inset-0 bg-primary/20" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" />
+                <div className="absolute inset-0 bg-primary/10" />
               </div>
 
               {/* Content Overlay */}
