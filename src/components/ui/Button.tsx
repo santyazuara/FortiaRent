@@ -11,10 +11,13 @@ const buttonStyles = cva(
     variants: {
       variant: {
         primary:
-          "bg-primary text-bg hover:opacity-90 shadow-sm ring-offset-bg",
+          "bg-primary text-white hover:bg-secondary/90 shadow-sm",
         secondary:
-          "border border-secondary text-secondary hover:bg-accent/70 bg-surface",
-        ghost: "text-secondary hover:bg-accent/60",
+          "bg-accent text-[#0F2E3A] hover:bg-white hover:text-[#0F2E3A] shadow-sm font-bold",
+        outline:
+          "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white transition-all",
+        outlineWhite:
+          "border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F2E3A] font-bold shadow-lg transition-all",
       },
       size: {
         md: "px-5 py-2.5",

@@ -8,74 +8,92 @@ import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { motion } from "framer-motion";
 
-const heroImages = [media.hero1, media.hero2, media.hero3];
+// SWIPER CSS (Esencial para que funcionen los cambios de imagen)
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/pagination";
 
 export default function HeroSlider() {
+  const images = [media.hero1, media.hero2, media.hero3];
+
   return (
-    <section className="section-divider relative">
+    <section className="relative overflow-hidden bg-primary">
       <Swiper
         modules={[Autoplay, EffectFade, Pagination]}
         slidesPerView={1}
-        autoplay={{ delay: 6500, disableOnInteraction: false }}
+        autoplay={{ delay: 15000, disableOnInteraction: false }}
+        loop={true}
         effect="fade"
         pagination={{
           clickable: true,
-          bulletClass:
-            "swiper-pagination-bullet !h-2 !w-2 !bg-bg/40 !opacity-70",
-          bulletActiveClass: "!bg-bg !opacity-100",
+          bulletClass: "swiper-pagination-bullet !bg-white/30 !opacity-100 !h-1.5 !w-10 !rounded-full !transition-all",
+          bulletActiveClass: "!bg-accent !w-16",
         }}
-        className="h-[78vh] min-h-[480px] max-h-[760px]"
+        className="h-[85vh] min-h-[600px]"
       >
-        {heroSlides.map((slide, index) => (
-          <SwiperSlide key={slide.id}>
-            <div className="relative h-full">
-              <div className="absolute inset-0 overflow-hidden">
-                <motion.div
-                  className="relative h-full w-full"
-                  initial={{ scale: 1.05 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 6, ease: "easeOut" }}
-                >
-                  <Image
-                    src={heroImages[index] ?? media.hero1}
-                    alt={slide.titulo}
-                    fill
-                    priority={index === 0}
-                    sizes="100vw"
-                    className="object-cover"
-                  />
-                </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/35 via-primary/38 to-primary/55" />
+        {images.map((img, index) => (
+          <SwiperSlide key={`hero-img-${index}`}>
+            <div className="relative h-full w-full">
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={img}
+                  alt={`FortiaRent Hero ${index + 1}`}
+                  fill
+                  className="object-cover opacity-90"
+                  priority={index === 0}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
+                <div className="absolute inset-0 bg-primary/20" />
               </div>
 
-              <div className="relative z-10 h-full">
-                <div className="mx-auto flex h-full max-w-6xl flex-col justify-center px-4 py-10 md:px-6 lg:px-8">
-                  <div className="max-w-xl space-y-5 text-bg md:space-y-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent/80">
-                      Pólizas jurídicas para arrendamiento y contratos
-                    </p>
-                    <h1 className="text-2xl font-semibold leading-snug md:text-3xl lg:text-[2.45rem] lg:leading-snug">
-                      {slide.titulo}
-                    </h1>
-                    <p className="max-w-md text-sm text-bg/85 md:text-[0.97rem]">
-                      {slide.subtitulo}
-                    </p>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <Button href={contactoInfo.whatsappLink} size="lg">
-                        Cotizar póliza
-                      </Button>
-                      <Button
-                        href="/polizas"
-                        variant="secondary"
-                        size="lg"
-                        className="border-bg/30 bg-transparent text-bg hover:border-accent/70 hover:bg-accent hover:text-primary"
-                      >
-                        Ver coberturas
-                      </Button>
-                    </div>
-                    <p className="pt-1 text-xs text-accent/85">
-                      {slide.confianza}
-                    </p>
+              {/* Content Overlay */}
+              <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-4 md:px-6 lg:px-8">
+                <div className="max-w-3xl">
+                  <motion.h1
+                    className="text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    Blindamos legalmente tus operaciones de arrendamiento
+                  </motion.h1>
+
+                  <motion.p
+                    className="mt-6 text-lg leading-relaxed text-white/90 md:text-xl"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                  >
+                    En <span className="font-semibold text-accent">Fortiarent</span> diseñamos pólizas jurídicas que protegen tu patrimonio y te permiten rentar con tranquilidad.
+                  </motion.p>
+
+                  <motion.p
+                    className="mt-4 text-[0.95rem] leading-relaxed text-white/70"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    Contamos con un equipo legal completo que acompaña cada operación desde la firma del contrato hasta la conclusión del arrendamiento.
+                  </motion.p>
+
+                  <div className="mt-10 flex flex-wrap gap-4">
+                    <Button
+                      href={contactoInfo.whatsappLink}
+                      size="lg"
+                      variant="secondary"
+                      className="shadow-2xl ring-4 ring-accent/30"
+                    >
+                      Solicitar póliza
+                    </Button>
+                    <Button
+                      href="/polizas"
+                      size="lg"
+                      variant="outlineWhite"
+                    >
+                      Ver tipos de póliza
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -84,12 +102,8 @@ export default function HeroSlider() {
         ))}
       </Swiper>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-5 z-20 flex items-center justify-center">
-        <div className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-primary/30 px-4 py-2 text-[11px] text-accent/90 backdrop-blur-sm">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          Cobertura jurídica para renta, contratos y empresas.
-        </div>
-      </div>
+      {/* Decorative Blur */}
+      <div className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-accent opacity-20 blur-3xl z-20" />
     </section>
   );
 }

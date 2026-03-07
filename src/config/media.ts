@@ -11,6 +11,6 @@ export const media = {
   policy1: "/images/stock/policy-1.png",
   policy2: "/images/stock/policy-2.png",
   policy3: "/images/stock/policy-3.png",
-  logo: "/images/stock/PHOTO-2026-03-04-19-37-17.jpg",
+  logo: "/images/stock/logo.png",
 };
 
