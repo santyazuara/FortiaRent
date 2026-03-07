@@ -15,7 +15,6 @@ const links = [
   { href: "/polizas", label: "Pólizas" },
   { href: "/documentos", label: "Documentos" },
   { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
-  { href: "/contacto", label: "Contacto" },
 ];
 
 export default function Navbar() {
@@ -38,9 +37,9 @@ export default function Navbar() {
               <Image
                 src={media.logo}
                 alt="FortiaRent"
-                width={320}
-                height={64}
-                className="h-16 w-auto object-contain"
+                width={360}
+                height={72}
+                className="h-18 w-auto object-contain"
                 priority
               />
             </Link>

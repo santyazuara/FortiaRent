@@ -1,7 +1,7 @@
 import AnimatedSection from "@/components/common/AnimatedSection";
 import SectionHeader from "@/components/common/SectionHeader";
 import { media } from "@/config/media";
-import { whyBullets } from "@/config/content";
+import { whyBullets, contactoInfo } from "@/config/content";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 
@@ -28,7 +28,7 @@ export default function SplitWhySection() {
             <Button href="/nosotros" size="lg">
               Conoce más
             </Button>
-            <Button href="/contacto" variant="secondary" size="lg">
+            <Button href={contactoInfo.whatsappLink} variant="secondary" size="lg">
               Hablar con un asesor
             </Button>
           </div>

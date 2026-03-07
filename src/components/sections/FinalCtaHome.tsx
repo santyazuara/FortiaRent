@@ -33,7 +33,7 @@ export default function FinalCtaHome() {
                             Solicitar póliza
                         </Button>
                         <Button
-                            href="/contacto"
+                            href={contactoInfo.whatsappLink}
                             size="lg"
                             variant="outlineWhite"
                         >

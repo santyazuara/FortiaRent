@@ -11,7 +11,6 @@ const footerLinks = [
   { href: "/polizas", label: "Pólizas" },
   { href: "/documentos", label: "Documentos" },
   { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
-  { href: "/contacto", label: "Contacto" },
 ];
 
 export default function Footer() {
