@@ -28,7 +28,7 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-40 border-b border-soft/60 bg-surface/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-1.5 md:px-6 lg:px-8">
           <motion.div
             whileHover={{ scale: 1.05, opacity: 0.85 }}
             whileTap={{ scale: 0.95 }}
@@ -38,9 +38,9 @@ export default function Navbar() {
               <Image
                 src={media.logo}
                 alt="FortiaRent"
-                width={480}
-                height={130}
-                className="h-32 w-auto object-contain"
+                width={320}
+                height={64}
+                className="h-16 w-auto object-contain"
                 priority
               />
             </Link>
