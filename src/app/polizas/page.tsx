@@ -66,6 +66,14 @@ const comparativo = [
   { feature: "Consulta antecedentes del fiador", tradicional: false, plus: true },
 ];
 
+const getWaLink = (poliza?: string) => {
+  const base = "https://wa.me/524421775524?text=";
+  const msg = poliza
+    ? `Hola, Santiago. Me gustaría solicitar la ${poliza} con FortiaRent.`
+    : "Hola, Santiago. Me gustaría cotizar una póliza con FortiaRent.";
+  return base + encodeURIComponent(msg);
+};
+
 export default function PolizasPage() {
   return (
     <div className="bg-page">
@@ -119,8 +127,8 @@ export default function PolizasPage() {
               <motion.div
                 key={policy.id}
                 className={`flex flex-col rounded-3xl border p-8 shadow-xl transition-all hover:scale-[1.02] ${policy.destacada
-                    ? "border-primary bg-primary text-white"
-                    : "border-soft bg-page text-primary"
+                  ? "border-primary bg-primary text-white"
+                  : "border-soft bg-page text-primary"
                   }`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -159,7 +167,7 @@ export default function PolizasPage() {
 
                 <div className="mt-10 pt-8 border-t border-white/10">
                   <Button
-                    href={contactoInfo.whatsappLink}
+                    href={getWaLink(policy.titulo)}
                     variant={policy.destacada ? "secondary" : "outline"}
                     size="lg"
                     className="w-full justify-center"
@@ -260,7 +268,7 @@ export default function PolizasPage() {
           </p>
           <div className="mt-12 flex flex-wrap justify-center gap-4">
             <Button
-              href={contactoInfo.whatsappLink}
+              href={getWaLink()}
               size="lg"
               variant="secondary"
               className="px-10"
@@ -268,7 +276,7 @@ export default function PolizasPage() {
               Solicitar Póliza
             </Button>
             <Button
-              href={contactoInfo.whatsappLink}
+              href={getWaLink()}
               size="lg"
               variant="outlineWhite"
               className="px-10"

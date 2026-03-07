@@ -33,9 +33,9 @@ export default function Navbar() {
             <Image
               src={media.logo}
               alt="FortiaRent"
-              width={160}
-              height={48}
-              className="h-10 w-auto object-contain"
+              width={280}
+              height={80}
+              className="h-20 w-auto object-contain"
               priority
             />
           </Link>
@@ -58,17 +58,19 @@ export default function Navbar() {
             </Button>
           </nav>
 
-          <button
+          <motion.button
             onClick={() => setOpen(true)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-soft text-primary md:hidden"
+            whileHover={{ scale: 1.1, opacity: 0.8 }}
+            whileTap={{ scale: 0.9 }}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-soft text-primary md:hidden shadow-sm"
             aria-label="Abrir menú"
           >
             <span className="sr-only">Menú</span>
             <div className="space-y-1.5">
+              <span className="block h-0.5 w-5 rounded bg-primary" />
               <span className="block h-0.5 w-4 rounded bg-primary" />
-              <span className="block h-0.5 w-3 rounded bg-primary" />
             </div>
-          </button>
+          </motion.button>
         </div>
       </header>
 

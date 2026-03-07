@@ -20,9 +20,9 @@ export default function Footer() {
             <Image
               src={media.logo}
               alt="FortiaRent"
-              width={160}
-              height={48}
-              className="h-10 w-auto object-contain"
+              width={280}
+              height={80}
+              className="h-20 w-auto object-contain"
             />
           </Link>
           <p className="mt-4 text-sm text-muted">
