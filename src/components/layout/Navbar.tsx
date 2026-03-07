@@ -28,17 +28,23 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-40 border-b border-soft/60 bg-surface/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6 lg:px-8">
-          <Link href="/" className="flex items-center">
-            <Image
-              src={media.logo}
-              alt="FortiaRent"
-              width={280}
-              height={80}
-              className="h-20 w-auto object-contain"
-              priority
-            />
-          </Link>
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6 lg:px-8">
+          <motion.div
+            whileHover={{ scale: 1.05, opacity: 0.85 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <Link href="/" className="flex items-center">
+              <Image
+                src={media.logo}
+                alt="FortiaRent"
+                width={480}
+                height={130}
+                className="h-32 w-auto object-contain"
+                priority
+              />
+            </Link>
+          </motion.div>
 
           <nav className="hidden items-center gap-6 md:flex">
             {links.map((link) => (

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { contactoInfo } from "@/config/content";
 import { media } from "@/config/media";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const footerLinks = [
@@ -16,15 +17,22 @@ export default function Footer() {
     <footer className="mt-16 border-t border-soft bg-surface">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 md:flex-row md:items-start md:justify-between md:px-6 lg:px-8">
         <div className="max-w-sm">
-          <Link href="/">
-            <Image
-              src={media.logo}
-              alt="FortiaRent"
-              width={280}
-              height={80}
-              className="h-20 w-auto object-contain"
-            />
-          </Link>
+          <motion.div
+            whileHover={{ scale: 1.05, opacity: 0.85 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="inline-block"
+          >
+            <Link href="/">
+              <Image
+                src={media.logo}
+                alt="FortiaRent"
+                width={480}
+                height={130}
+                className="h-32 w-auto object-contain"
+              />
+            </Link>
+          </motion.div>
           <p className="mt-4 text-sm text-muted">
             Diseñamos soluciones jurídicas para proteger tus contratos,
             inmuebles y operaciones de arrendamiento con procesos claros y
