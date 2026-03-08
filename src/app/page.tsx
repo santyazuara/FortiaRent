@@ -6,7 +6,6 @@ import StatsStrip from "@/components/sections/StatsStrip";
 import PolicyPreview from "@/components/sections/PolicyPreview";
 import VisualSupport from "@/components/sections/VisualSupport";
 import Advantages from "@/components/sections/Advantages";
-import StepsSection from "@/components/sections/StepsSection";
 import FinalCtaHome from "@/components/sections/FinalCtaHome";
 
 export default function HomePage() {
@@ -19,7 +18,6 @@ export default function HomePage() {
       <QuickCta />
       <VisualSupport />
       <PolicyPreview />
-      <StepsSection />
       <Advantages />
       <FinalCtaHome />
     </>
