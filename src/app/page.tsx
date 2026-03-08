@@ -2,7 +2,6 @@ import HeroSlider from "@/components/hero/HeroSlider";
 import ValueProp from "@/components/sections/ValueProp";
 import SplitWhySection from "@/components/sections/SplitWhySection";
 import QuickCta from "@/components/sections/QuickCta";
-import StatsStrip from "@/components/sections/StatsStrip";
 import PolicyPreview from "@/components/sections/PolicyPreview";
 import VisualSupport from "@/components/sections/VisualSupport";
 import Advantages from "@/components/sections/Advantages";
@@ -12,7 +11,6 @@ export default function HomePage() {
   return (
     <>
       <HeroSlider />
-      <StatsStrip />
       <ValueProp />
       <SplitWhySection />
       <QuickCta />
