@@ -1,17 +1,25 @@
 import HeroSlider from "@/components/hero/HeroSlider";
 import ValueProp from "@/components/sections/ValueProp";
+import SplitWhySection from "@/components/sections/SplitWhySection";
 import QuickCta from "@/components/sections/QuickCta";
+import StatsStrip from "@/components/sections/StatsStrip";
 import PolicyPreview from "@/components/sections/PolicyPreview";
+import VisualSupport from "@/components/sections/VisualSupport";
 import Advantages from "@/components/sections/Advantages";
+import StepsSection from "@/components/sections/StepsSection";
 import FinalCtaHome from "@/components/sections/FinalCtaHome";
 
 export default function HomePage() {
   return (
     <>
       <HeroSlider />
+      <StatsStrip />
       <ValueProp />
+      <SplitWhySection />
       <QuickCta />
+      <VisualSupport />
       <PolicyPreview />
+      <StepsSection />
       <Advantages />
       <FinalCtaHome />
     </>
