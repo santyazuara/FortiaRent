@@ -56,8 +56,11 @@ export async function POST(request: Request) {
         });
 
         return response;
-    } catch (error) {
+    } catch (error: any) {
         console.error(`Login error at phase: ${phase}`, error);
-        return NextResponse.json({ error: `Error en el servidor (fase: ${phase})` }, { status: 500 });
+        return NextResponse.json({
+            error: `Error en el servidor (fase: ${phase}): ${error.message}`,
+            phase
+        }, { status: 500 });
     }
 }
