@@ -1,4 +1,4 @@
-import { PrismaClient, CategoryType } from './generated/client'
+import { PrismaClient, CategoryType } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
