@@ -45,10 +45,15 @@ export default function ValueProp() {
                                         viewport={{ once: true }}
                                         transition={{ delay: i * 0.1 }}
                                     >
-                                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                                            <CheckCircle2 className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                                        <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-primary/10 shadow-sm">
+                                            <motion.div
+                                                className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+                                                animate={{ x: ["-100%", "200%"] }}
+                                                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                                            />
+                                            <CheckCircle2 className="relative z-10 h-7 w-7 text-primary" strokeWidth={3} />
                                         </div>
-                                        <span className="capitalize">{benefit}</span>
+                                        <span className="capitalize text-lg">{benefit}</span>
                                     </motion.li>
                                 ))}
                             </ul>
