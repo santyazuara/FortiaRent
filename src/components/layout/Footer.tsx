@@ -66,6 +66,7 @@ export default function Footer() {
               <p>WhatsApp: {contactoInfo.whatsapp}</p>
               <p>Correo: {contactoInfo.correo}</p>
               <p>Horario: {contactoInfo.horario}</p>
+              <p className="max-w-[200px] leading-relaxed">Dirección: {contactoInfo.direccion}</p>
             </div>
           </div>
         </div>

@@ -412,7 +412,7 @@ export const contactoInfo = {
   whatsappLink: "https://wa.me/524421775524?text=Hola%2C%20Santiago.%20Me%20gustar%C3%ADa%20cotizar%20una%20p%C3%B3liza%20con%20FortiaRent",
   correo: "contacto@fortiarent.mx",
   horario: "Lunes a viernes de 9:00 a 19:00 h",
-  direccion: "Oficinas corporativas en Ciudad de México (dirección referencial)",
+  direccion: "Avenida Armando Birlain Shaffler 2001, Central Park, Corporativo 1, Piso 4, Letra C, Centro Sur, Querétaro, Qro.",
   zonasCobertura:
     "Principalmente CDMX, Área Metropolitana y ciudades clave del país.",
 };
