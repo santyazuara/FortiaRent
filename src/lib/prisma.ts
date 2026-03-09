@@ -10,15 +10,15 @@ const prismaClientSingleton = () => {
         throw new Error("ERROR: DATABASE_URL is missing. Please check Vercel settings.")
     }
 
-    // Identify the protocol
     const protocol = connectionString.split(':')[0]
-
-    // Help users who might be using the wrong protocol with adapter-pg
     if (protocol === 'prisma+postgres') {
         throw new Error("ERROR: 'prisma+postgres://' is not supported by adapter-pg. Use 'postgres://' for Supabase.")
     }
 
-    const pool = new pg.Pool({ connectionString })
+    const pool = new pg.Pool({
+        connectionString,
+        ssl: { rejectUnauthorized: false }
+    })
     const adapter = new PrismaPg(pool)
     return new PrismaClient({ adapter })
 }
