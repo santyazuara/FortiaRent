@@ -55,8 +55,8 @@ export async function POST(request: Request) {
         });
 
         return response;
-    } catch (error) {
+    } catch (error: any) {
         console.error("Signup error:", error);
-        return NextResponse.json({ error: "Error al crear la cuenta" }, { status: 500 });
+        return NextResponse.json({ error: `Error al crear la cuenta: ${error.message}` }, { status: 500 });
     }
 }

@@ -43,7 +43,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05, opacity: 0.85 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="flex items-center"
+            className="flex items-center shrink-0"
           >
             <Link href="/" className="flex items-center p-0">
               <Image
@@ -57,12 +57,13 @@ export default function Navbar() {
             </Link>
           </motion.div>
 
-          <nav className="hidden items-center gap-6 md:flex">
+          {/* Centered Desktop Links */}
+          <nav className="hidden flex-1 items-center justify-center gap-8 md:flex">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm transition-colors ${isActive(link.href)
+                className={`text-sm tracking-wide transition-colors ${isActive(link.href)
                   ? "font-semibold text-primary"
                   : "text-muted hover:text-primary"
                   }`}
@@ -74,7 +75,7 @@ export default function Navbar() {
             {isLoggedIn && (
               <Link
                 href="/dashboard"
-                className={`text-sm transition-colors ${isActive("/dashboard")
+                className={`text-sm tracking-wide transition-colors ${isActive("/dashboard")
                   ? "font-semibold text-primary"
                   : "text-muted hover:text-primary"
                   }`}
@@ -82,36 +83,37 @@ export default function Navbar() {
                 Mi Dashboard
               </Link>
             )}
-
-            <div className="flex items-center gap-3">
-              {isLoggedIn ? (
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2 rounded-full border border-soft bg-accent/30 px-3 py-1.5">
-                    <UserIcon className="h-4 w-4 text-primary" />
-                    <span className="text-sm font-semibold text-primary">{user?.name}</span>
-                  </div>
-                  <button
-                    onClick={logout}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-soft text-primary hover:bg-accent/40 transition-colors"
-                  >
-                    <LogOut className="h-4 w-4" />
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <button
-                    onClick={() => openAuth("login")}
-                    className="text-sm font-semibold text-primary hover:text-secondary transition-colors"
-                  >
-                    Ingresar
-                  </button>
-                  <Button href={contactoInfo.whatsappLink} size="md">
-                    Cotizar Póliza
-                  </Button>
-                </>
-              )}
-            </div>
           </nav>
+
+          {/* Right Desktop Auth/CTA */}
+          <div className="hidden items-center gap-5 md:flex shrink-0">
+            {isLoggedIn ? (
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 rounded-full border border-soft bg-accent/30 px-4 py-2">
+                  <UserIcon className="h-4 w-4 text-primary" />
+                  <span className="text-sm font-semibold text-primary">{user?.name}</span>
+                </div>
+                <button
+                  onClick={logout}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-soft text-primary hover:bg-accent/40 transition-colors"
+                >
+                  <LogOut className="h-4 w-4" />
+                </button>
+              </div>
+            ) : (
+              <>
+                <button
+                  onClick={() => openAuth("login")}
+                  className="text-sm font-semibold text-primary hover:text-secondary transition-colors"
+                >
+                  Ingresar
+                </button>
+                <Button href={contactoInfo.whatsappLink} size="md" className="shadow-md">
+                  Cotizar Póliza
+                </Button>
+              </>
+            )}
+          </div>
 
           <motion.button
             onClick={() => setOpen(true)}
