@@ -244,7 +244,7 @@ export default function PolizasPage() {
               <div>
                 <h4 className="font-bold text-primary">Trámite de investigación</h4>
                 <p className="mt-2 text-sm text-primary/80">
-                  Para iniciar el trámite de investigación se deberá realizar un depósito de <span className="font-bold">$1,000 pesos</span>, el cual se tomará a cuenta del costo total de la póliza.
+                  Para iniciar el trámite de investigación se deberá realizar un pago de <span className="font-bold">$1,000 pesos</span>, el cual se tomará a cuenta del costo total de la póliza.
                 </p>
               </div>
             </div>

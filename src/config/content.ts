@@ -350,9 +350,9 @@ export const faqs = [
           "Generalmente se requiere documentación básica del arrendatario y/o obligado solidario (dependiendo la póliza), como identificación oficial, comprobantes de ingresos y comprobante de domicilio. Nuestro equipo te indicará la documentación específica necesaria para cada operación.",
       },
       {
-        pregunta: "¿Qué se necesita para iniciar la investigación del arrendatario?",
+        pregunta: "¿Tiene algún costo iniciar la investigación?",
         respuesta:
-          "Para iniciar el trámite se debe realizar un depósito de $1,000 pesos, el cual se toma a cuenta del costo total de la póliza.",
+          "Para iniciar el trámite se debe realizar un pago de $1,000 pesos, el cual se toma a cuenta del costo total de la póliza.",
       },
     ],
   },
