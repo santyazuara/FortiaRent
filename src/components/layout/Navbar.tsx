@@ -31,14 +31,15 @@ export default function Navbar() {
             whileHover={{ scale: 1.05, opacity: 0.85 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="flex items-center"
           >
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center p-0">
               <Image
                 src={media.logo}
                 alt="FortiaRent"
                 width={400}
                 height={100}
-                className="h-24 w-auto object-contain"
+                className="h-[76px] w-auto object-contain"
                 priority
               />
             </Link>
