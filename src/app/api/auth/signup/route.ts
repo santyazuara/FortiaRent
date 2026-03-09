@@ -7,7 +7,8 @@ const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET || "secreto_f
 
 export async function POST(request: Request) {
     try {
-        const { name, email, password } = await request.json();
+        const { name, email: rawEmail, password } = await request.json();
+        const email = rawEmail?.toLowerCase().trim();
 
         if (!name || !email || !password) {
             return NextResponse.json({ error: "Campos incompletos" }, { status: 400 });

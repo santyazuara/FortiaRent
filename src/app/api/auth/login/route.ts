@@ -7,7 +7,8 @@ const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET || "secreto_f
 
 export async function POST(request: Request) {
     try {
-        const { email, password } = await request.json();
+        const { email: rawEmail, password } = await request.json();
+        const email = rawEmail?.toLowerCase().trim();
 
         if (!email || !password) {
             return NextResponse.json({ error: "Faltan credenciales" }, { status: 400 });
@@ -18,15 +19,17 @@ export async function POST(request: Request) {
             where: { email }
         });
 
+        console.log(`Login attempt for: ${email}, Found: ${!!user}`);
+
         if (!user) {
-            return NextResponse.json({ error: "Credenciales inválidas" }, { status: 401 });
+            return NextResponse.json({ error: "No existe una cuenta con este correo" }, { status: 401 });
         }
 
         // 2. Verificar contraseña
         const isValid = await bcrypt.compare(password, user.passwordHash);
 
         if (!isValid) {
-            return NextResponse.json({ error: "Credenciales inválidas" }, { status: 401 });
+            return NextResponse.json({ error: "La contraseña es incorrecta" }, { status: 401 });
         }
 
         // 3. Generar JWT
