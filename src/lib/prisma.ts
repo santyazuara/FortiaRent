@@ -3,18 +3,19 @@ import { PrismaPg } from '@prisma/adapter-pg'
 import pg from 'pg'
 
 const prismaClientSingleton = () => {
-    const isProduction = process.env.NODE_ENV === 'production'
     const connectionString = process.env.DATABASE_URL
+    const isProduction = process.env.NODE_ENV === 'production'
 
     if (!connectionString) {
-        if (isProduction) {
-            throw new Error("CRITICAL: DATABASE_URL environment variable is missing in production. Please set it in Vercel settings.")
-        }
-        // Fallback for local development if not set in .env
-        const localFallback = "postgresql://postgres:postgres@localhost:5432/fortiarent?sslmode=disable"
-        const pool = new pg.Pool({ connectionString: localFallback })
-        const adapter = new PrismaPg(pool)
-        return new PrismaClient({ adapter })
+        throw new Error("ERROR: DATABASE_URL is missing. Please check Vercel settings.")
+    }
+
+    // Identify the protocol
+    const protocol = connectionString.split(':')[0]
+
+    // Help users who might be using the wrong protocol with adapter-pg
+    if (protocol === 'prisma+postgres') {
+        throw new Error("ERROR: 'prisma+postgres://' is not supported by adapter-pg. Use 'postgres://' for Supabase.")
     }
 
     const pool = new pg.Pool({ connectionString })
