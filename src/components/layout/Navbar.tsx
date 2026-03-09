@@ -36,9 +36,9 @@ export default function Navbar() {
               <Image
                 src={media.logo}
                 alt="FortiaRent"
-                width={360}
-                height={72}
-                className="h-18 w-auto object-contain"
+                width={400}
+                height={100}
+                className="h-24 w-auto object-contain"
                 priority
               />
             </Link>
