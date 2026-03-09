@@ -2,7 +2,7 @@
 
 import { useAuth } from "@/context/AuthContext";
 import { AnimatePresence, motion } from "framer-motion";
-import { LogIn, UserPlus, X, Mail, Lock, User, Loader2 } from "lucide-react";
+import { LogIn, UserPlus, X, Mail, Lock, User, Loader2, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 import { useRouter } from "next/navigation";
@@ -16,6 +16,7 @@ interface AuthModalProps {
 export default function AuthModal({ isOpen, onClose, initialMode = "login" }: AuthModalProps) {
     const [mode, setMode] = useState<"login" | "signup">(initialMode);
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const { login, signup } = useAuth();
     const router = useRouter();
 
@@ -143,12 +144,19 @@ export default function AuthModal({ isOpen, onClose, initialMode = "login" }: Au
                                             <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted group-focus-within:text-primary transition-colors" />
                                             <input
                                                 required
-                                                type="password"
+                                                type={showPassword ? "text" : "password"}
                                                 placeholder="••••••••"
-                                                className="w-full rounded-2xl border border-soft bg-page py-3 pl-11 pr-4 text-sm text-primary placeholder:text-muted/50 focus:border-primary/50 focus:outline-none focus:ring-4 focus:ring-primary/5 shadow-sm transition-all"
+                                                className="w-full rounded-2xl border border-soft bg-page py-3 pl-11 pr-12 text-sm text-primary placeholder:text-muted/50 focus:border-primary/50 focus:outline-none focus:ring-4 focus:ring-primary/5 shadow-sm transition-all"
                                                 value={formData.password}
                                                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                             />
+                                            <button
+                                                type="button"
+                                                onClick={() => setShowPassword(!showPassword)}
+                                                className="absolute right-4 top-1/2 -translate-y-1/2 text-muted hover:text-primary transition-colors focus:outline-none"
+                                            >
+                                                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                                            </button>
                                         </div>
                                     </div>
 

@@ -1,11 +1,25 @@
 import { PrismaClient, CategoryType } from './generated/client'
 import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3'
+import bcrypt from 'bcryptjs'
 
 const adapter = new PrismaBetterSqlite3({ url: 'dev.db' })
 const prisma = new PrismaClient({ adapter })
 
 async function main() {
-    console.log('Seeding requirements...')
+    console.log('Seeding data...')
+
+    // 1. Create Test User
+    const passwordHash = await bcrypt.hash('secret123', 10);
+    const testUser = await prisma.user.upsert({
+        where: { email: 'test@fortiarent.mx' },
+        update: {},
+        create: {
+            name: 'Usuario Test',
+            email: 'test@fortiarent.mx',
+            passwordHash,
+        }
+    });
+    console.log('Test user created:', testUser.email);
 
     const requirements = [
         // ARRENDADOR
