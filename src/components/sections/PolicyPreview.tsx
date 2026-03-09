@@ -61,14 +61,14 @@ export default function PolicyPreview() {
                             transition={{ delay: i * 0.1 }}
                         >
                             {/* Background Image for Card */}
-                            <div className="absolute inset-0 z-0">
+                            <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
                                 <Image
                                     src={policy.image}
                                     alt={policy.titulo}
                                     fill
-                                    className="object-cover opacity-[0.15] grayscale transition-all duration-700 group-hover:scale-110 group-hover:opacity-20 group-hover:grayscale-0"
+                                    className="object-cover opacity-20 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-60 group-hover:grayscale-0"
                                 />
-                                <div className={`absolute inset-0 ${policy.destacada ? 'bg-primary/80' : 'bg-page/90'}`} />
+                                <div className={`absolute inset-0 transition-colors duration-700 ${policy.destacada ? 'bg-primary/80 group-hover:bg-primary/60' : 'bg-page/90 group-hover:bg-page/70'}`} />
                             </div>
 
                             <div className="relative z-10 p-8">
