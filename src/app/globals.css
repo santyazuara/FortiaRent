@@ -6,10 +6,12 @@
   --secondary: #3A5668;
   --accent: #CFE3DE;
   --bg: #F4F6F8;
-  --surface: #F4F6F8; /* Using Pure White for surfaces as well */
+  --surface: #F4F6F8;
+  /* Using Pure White for surfaces as well */
   --text: #0F2E3A;
   --muted: #3A5668;
-  --border: rgba(58, 86, 104, 0.18); /* Based on #3A5668 */
+  --border: rgba(58, 86, 104, 0.18);
+  /* Based on #3A5668 */
 }
 
 @theme inline {
@@ -75,11 +77,9 @@ body {
   right: 0;
   bottom: -1px;
   height: 32px;
-  background: radial-gradient(
-    ellipse at top,
-    rgba(12, 41, 52, 0.12),
-    transparent 60%
-  );
+  background: radial-gradient(ellipse at top,
+      rgba(12, 41, 52, 0.12),
+      transparent 60%);
   opacity: 0.5;
   pointer-events: none;
 }
@@ -93,11 +93,9 @@ body {
   content: "";
   position: absolute;
   inset: -12px -24px;
-  background: radial-gradient(
-    circle at left,
-    rgba(207, 227, 222, 0.12),
-    transparent 55%
-  );
+  background: radial-gradient(circle at left,
+      rgba(207, 227, 222, 0.12),
+      transparent 55%);
   z-index: -1;
 }
 
@@ -113,6 +111,36 @@ body {
 ::-webkit-scrollbar-thumb {
   background: rgba(15, 46, 58, 0.25);
   border-radius: 999px;
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer-light {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-light::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.6),
+      transparent);
+  animation: shimmer 3s infinite linear;
 }
 
 /* Swiper base (los estilos principales se importan desde el propio paquete) */

@@ -8,6 +8,9 @@ import { contactoInfo } from "@/config/content";
 import { media } from "@/config/media";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { useAuth } from "@/context/AuthContext";
+import AuthModal from "@/components/auth/AuthModal";
+import { LogOut, User as UserIcon } from "lucide-react";
 
 const links = [
   { href: "/", label: "Inicio" },
@@ -19,9 +22,18 @@ const links = [
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<"login" | "signup">("login");
+  const { user, isLoggedIn, logout } = useAuth();
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href) && href !== "/";
+
+  const openAuth = (mode: "login" | "signup") => {
+    setAuthMode(mode);
+    setAuthModalOpen(true);
+    setOpen(false);
+  };
 
   return (
     <>
@@ -58,9 +70,47 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Button href={contactoInfo.whatsappLink} size="md">
-              Cotizar póliza
-            </Button>
+
+            {isLoggedIn && (
+              <Link
+                href="/dashboard"
+                className={`text-sm transition-colors ${isActive("/dashboard")
+                  ? "font-semibold text-primary"
+                  : "text-muted hover:text-primary"
+                  }`}
+              >
+                Mi Dashboard
+              </Link>
+            )}
+
+            <div className="flex items-center gap-3">
+              {isLoggedIn ? (
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 rounded-full border border-soft bg-accent/30 px-3 py-1.5">
+                    <UserIcon className="h-4 w-4 text-primary" />
+                    <span className="text-sm font-semibold text-primary">{user?.name}</span>
+                  </div>
+                  <button
+                    onClick={logout}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-soft text-primary hover:bg-accent/40 transition-colors"
+                  >
+                    <LogOut className="h-4 w-4" />
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <button
+                    onClick={() => openAuth("login")}
+                    className="text-sm font-semibold text-primary hover:text-secondary transition-colors"
+                  >
+                    Ingresar
+                  </button>
+                  <Button href={contactoInfo.whatsappLink} size="md">
+                    Cotizar Póliza
+                  </Button>
+                </>
+              )}
+            </div>
           </nav>
 
           <motion.button
@@ -78,6 +128,12 @@ export default function Navbar() {
           </motion.button>
         </div>
       </header>
+
+      <AuthModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+        initialMode={authMode}
+      />
 
       <AnimatePresence>
         {open && (
@@ -122,8 +178,52 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                <div className="mt-3">
-                  <Button href={contactoInfo.whatsappLink} className="w-full">
+
+                {isLoggedIn && (
+                  <Link
+                    href="/dashboard"
+                    onClick={() => setOpen(false)}
+                    className={`rounded-lg px-3 py-2 text-sm ${isActive("/dashboard")
+                      ? "bg-accent/70 font-semibold text-primary"
+                      : "text-muted hover:bg-accent/40"
+                      }`}
+                  >
+                    Mi Dashboard
+                  </Link>
+                )}
+
+                <div className="mt-4 flex flex-col gap-3">
+                  {isLoggedIn ? (
+                    <>
+                      <div className="flex items-center gap-3 rounded-xl bg-accent/40 p-3">
+                        <UserIcon className="h-5 w-5 text-primary" />
+                        <span className="text-sm font-bold text-primary">{user?.name}</span>
+                      </div>
+                      <button
+                        onClick={logout}
+                        className="flex items-center justify-center gap-2 rounded-xl border border-soft py-3 text-sm font-semibold text-primary hover:bg-accent/20 transition-colors"
+                      >
+                        <LogOut className="h-4 w-4" />
+                        Cerrar sesión
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Button href={contactoInfo.whatsappLink} className="w-full">
+                        Cotizar Póliza
+                      </Button>
+                      <button
+                        onClick={() => openAuth("login")}
+                        className="rounded-xl border border-soft py-3 text-sm font-semibold text-primary hover:bg-accent/20 transition-colors"
+                      >
+                        Iniciar sesión
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-soft">
+                  <Button href={contactoInfo.whatsappLink} variant="outline" className="w-full">
                     Cotizar póliza
                   </Button>
                 </div>

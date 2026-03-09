@@ -154,12 +154,15 @@ export default function PolizasPage() {
                 )}
 
                 <div className="mt-8 flex-1">
-                  <p className="text-xs font-bold uppercase tracking-widest text-accent mb-4">Incluye</p>
-                  <ul className="space-y-3">
+                  <p className="text-xs font-bold uppercase tracking-widest text-accent mb-4 underline underline-offset-4 decoration-accent/30">Incluye</p>
+                  <ul className="space-y-4">
                     {policy.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-3 text-sm">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                        <span>{bullet}</span>
+                      <li key={bullet} className="flex items-start gap-3 text-[0.925rem] leading-snug">
+                        <div className="relative mt-0.5 shrink-0 overflow-hidden rounded-full p-0.5 group/icon">
+                          <div className={`absolute inset-0 bg-accent transition-transform duration-500 group-hover/icon:scale-125 ${policy.destacada ? "opacity-100" : "opacity-90 shadow-sm"}`} />
+                          <CheckCircle2 className={`relative h-5 w-5 ${policy.destacada ? "text-primary" : "text-primary"} shimmer-light rounded-full`} />
+                        </div>
+                        <span className={policy.destacada ? "text-white/95" : "text-primary/90"}>{bullet}</span>
                       </li>
                     ))}
                   </ul>
