@@ -312,52 +312,62 @@ export const policyCategories: PolicyCategory[] = [
 
 export const faqs = [
   {
-    categoria: "Cobertura",
+    categoria: "General",
     preguntas: [
       {
-        pregunta: "¿Qué cubre una póliza jurídica de arrendamiento?",
+        pregunta: "¿Qué es una póliza jurídica de arrendamiento?",
         respuesta:
-          "Dependiendo del esquema contratado, puede incluir revisión de contrato, análisis de inquilino, apoyo en caso de incumplimiento de pago y acompañamiento en procesos legales relacionados con el contrato.",
+          "Es un servicio legal que protege al propietario durante la vigencia del contrato de arrendamiento. A través de la póliza, nuestro equipo de abogados interviene en caso de incumplimiento del contrato por parte del arrendatario.",
       },
       {
-        pregunta: "¿La póliza me cubre en todo México?",
+        pregunta: "¿Qué sucede si el inquilino deja de pagar la renta?",
         respuesta:
-          "Trabajamos principalmente en las principales zonas urbanas del país. Verificamos tu caso y te confirmamos el alcance geográfico específico antes de contratar.",
+          "Dependiendo de la situación, se inicia primero un proceso de cobranza extrajudicial para buscar una solución. Si el incumplimiento continúa, se inicia el procedimiento judicial para recuperar el inmueble. En la Póliza Plus también se puede promover el juicio para la recuperación de rentas y servicios adeudados.",
+      },
+      {
+        pregunta: "¿La póliza cubre todo el tiempo que dura el contrato?",
+        respuesta:
+          "Sí. La póliza brinda protección jurídica durante toda la vigencia del contrato de arrendamiento.",
+      },
+      {
+        pregunta: "¿Cuánto cuesta una póliza jurídica?",
+        respuesta:
+          "El costo depende del valor de la renta mensual. Póliza Tradicional: 30% del valor de la renta mensual. Póliza Plus: 35% del valor de la renta mensual. Si la renta es menor a $10,000 pesos, el cálculo se realiza tomando como base $10,000 pesos. En caso de requerir factura, el precio se ajustará más IVA.",
       },
     ],
   },
   {
-    categoria: "Solicitudes",
+    categoria: "Trámite y Documentación",
     preguntas: [
       {
-        pregunta: "¿Cuánto tiempo tarda en emitirse una póliza?",
+        pregunta: "¿Cuánto tiempo tarda en emitirse la póliza?",
         respuesta:
-          "Una vez recibida la documentación completa, el tiempo promedio de respuesta es de 24 a 48 horas hábiles.",
+          "Una vez recibida la documentación completa del arrendatario, el proceso de investigación y emisión de la póliza puede realizarse en menos de 48 horas.",
       },
       {
-        pregunta: "¿Qué documentos necesito para contratar?",
+        pregunta: "¿Qué documentos se necesitan para iniciar el trámite?",
         respuesta:
-          "Normalmente se requieren identificaciones oficiales, comprobantes de ingresos y documentación del inmueble. Te compartimos una lista detallada según el tipo de póliza.",
+          "Generalmente se requiere documentación básica del arrendatario y/o obligado solidario (dependiendo la póliza), como identificación oficial, comprobantes de ingresos y comprobante de domicilio. Nuestro equipo te indicará la documentación específica necesaria para cada operación.",
       },
-    ],
-  },
-  {
-    categoria: "Pagos",
-    preguntas: [
       {
-        pregunta: "¿Puedo pagar la póliza en parcialidades?",
+        pregunta: "¿Qué se necesita para iniciar la investigación del arrendatario?",
         respuesta:
-          "En algunos esquemas es posible. Durante la cotización te explicamos las opciones disponibles y condiciones aplicables.",
+          "Para iniciar el trámite se debe realizar un depósito de $1,000 pesos, el cual se toma a cuenta del costo total de la póliza.",
       },
     ],
   },
   {
-    categoria: "Documentos",
+    categoria: "Casos Especiales",
     preguntas: [
       {
-        pregunta: "¿Pueden revisar contratos que ya tengo firmados?",
+        pregunta: "¿Qué pasa si el inquilino abandona el inmueble?",
         respuesta:
-          "Sí, podemos analizar contratos existentes para identificar riesgos y sugerir ajustes para futuras operaciones.",
+          "En caso de abandono del inmueble, se puede iniciar el procedimiento legal correspondiente para recuperar la posesión de la propiedad.",
+      },
+      {
+        pregunta: "¿Puedo solicitar factura por el servicio?",
+        respuesta:
+          "Sí, es posible emitir factura por el servicio de la póliza jurídica. En caso de requerir factura, el costo del servicio se ajustará más IVA conforme a la legislación fiscal aplicable.",
       },
     ],
   },
