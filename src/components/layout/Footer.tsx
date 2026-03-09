@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const footerLinks = [
-  { href: "/nosotros", label: "Nosotros" },
   { href: "/polizas", label: "Pólizas" },
   { href: "/documentos", label: "Documentos" },
   { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },

@@ -25,8 +25,8 @@ export default function SplitWhySection() {
             ))}
           </ul>
           <div className="mt-5 flex flex-wrap gap-3">
-            <Button href="/nosotros" size="lg">
-              Conoce más
+            <Button href="/polizas" size="lg">
+              Ver pólizas
             </Button>
             <Button href={contactoInfo.whatsappLink} variant="secondary" size="lg">
               Hablar con un asesor

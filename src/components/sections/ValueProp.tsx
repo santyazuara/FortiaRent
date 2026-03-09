@@ -39,14 +39,16 @@ export default function ValueProp() {
                                 {benefits.map((benefit, i) => (
                                     <motion.li
                                         key={benefit}
-                                        className="flex items-center gap-3 text-sm font-medium text-primary"
+                                        className="flex items-center gap-4 text-base font-bold text-primary"
                                         initial={{ opacity: 0, x: 12 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: i * 0.1 }}
                                     >
-                                        <CheckCircle2 className="h-5 w-5 text-accent" />
-                                        <span>{benefit}</span>
+                                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/10">
+                                            <CheckCircle2 className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                                        </div>
+                                        <span className="capitalize">{benefit}</span>
                                     </motion.li>
                                 ))}
                             </ul>

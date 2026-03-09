@@ -11,7 +11,6 @@ import Image from "next/image";
 
 const links = [
   { href: "/", label: "Inicio" },
-  { href: "/nosotros", label: "Nosotros" },
   { href: "/polizas", label: "Pólizas" },
   { href: "/documentos", label: "Documentos" },
   { href: "/preguntas-frecuentes", label: "Preguntas frecuentes" },
