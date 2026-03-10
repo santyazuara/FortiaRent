@@ -17,8 +17,14 @@ const prismaClientSingleton = () => {
 
     const pool = new pg.Pool({
         connectionString,
-        ssl: { rejectUnauthorized: false }
+        ssl: { rejectUnauthorized: false },
+        connectionTimeoutMillis: 10000,
     })
+
+    pool.on('error', (err) => {
+        console.error('Unexpected pool error', err)
+    })
+
     const adapter = new PrismaPg(pool)
     return new PrismaClient({ adapter })
 }
