@@ -77,7 +77,7 @@ export async function POST(request: Request) {
         return NextResponse.json({
             error: errorMsg,
             phase,
-            debug: process.env.NODE_ENV !== 'production' ? error.stack : undefined
+            debug: error.message || error.stack
         }, { status: 500 });
     }
 }
