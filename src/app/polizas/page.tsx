@@ -138,7 +138,7 @@ export default function PolizasPage() {
                 <div className="flex items-center gap-4">
                   <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${policy.destacada ? "bg-accent/20" : "bg-primary/10"
                     }`}>
-                    {policy.destacada ? <ShieldCheck className="h-6 w-6 text-accent" /> : <Home className="h-6 w-6 text-accent" />}
+                    {policy.destacada ? <ShieldCheck className="h-6 w-6 text-accent" /> : <Home className="h-6 w-6 text-primary" />}
                   </div>
                   <h3 className="text-2xl font-bold">{policy.titulo}</h3>
                 </div>
@@ -154,7 +154,7 @@ export default function PolizasPage() {
                 )}
 
                 <div className="mt-8 flex-1">
-                  <p className="text-xs font-bold uppercase tracking-widest text-accent mb-4 underline underline-offset-4 decoration-accent/30">Incluye</p>
+                  <p className={`text-xs font-bold uppercase tracking-widest mb-4 underline underline-offset-4 ${policy.destacada ? "text-accent decoration-accent/30" : "text-primary decoration-primary/30"}`}>Incluye</p>
                   <ul className="space-y-4">
                     {policy.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-3 text-[0.925rem] leading-snug">
