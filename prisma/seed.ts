@@ -4,9 +4,10 @@ import pg from 'pg'
 import bcrypt from 'bcryptjs'
 
 const connectionString = process.env.DATABASE_URL!
+const isLocal = /@(localhost|127\.0\.0\.1)[:/]/.test(connectionString) || /sslmode=disable/.test(connectionString)
 const pool = new pg.Pool({
     connectionString,
-    ssl: { rejectUnauthorized: false }
+    ssl: isLocal ? false : { rejectUnauthorized: false }
 })
 const adapter = new PrismaPg(pool)
 const prisma = new PrismaClient({ adapter })

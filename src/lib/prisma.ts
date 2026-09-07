@@ -15,9 +15,12 @@ const prismaClientSingleton = () => {
         throw new Error("ERROR: 'prisma+postgres://' is not supported by adapter-pg. Use 'postgres://' for Supabase.")
     }
 
+    // Local dev (prisma dev / localhost) speaks plain TCP with no TLS; Supabase requires SSL.
+    const isLocal = /@(localhost|127\.0\.0\.1)[:/]/.test(connectionString) || /sslmode=disable/.test(connectionString)
+
     const pool = new pg.Pool({
         connectionString,
-        ssl: { rejectUnauthorized: false },
+        ssl: isLocal ? false : { rejectUnauthorized: false },
         connectionTimeoutMillis: 10000,
     })
 
